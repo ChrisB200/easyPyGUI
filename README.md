@@ -28,9 +28,11 @@ To use **easyPyGUI** in your project, import the necessary classes:
 
    ```python
    from easyPyGUI import Root, UIElement, Menu
-
+   ```
 
 ## Examples
+
+Here's a basic example of how to create a simple GUI using easyPyGUI
 
 ## Contibuting
 
