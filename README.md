@@ -19,15 +19,15 @@
    pip install pygame
 
 3. Clone **easyPyGUI** from GitHub
-    ```bash
-    git clone https://github.com/ChrisB200/easyPyGUI.git
+   ```bash
+   git clone https://github.com/ChrisB200/easyPyGUI.git
 
 ## Usage
 
 To use **easyPyGUI** in your project, import the necessary classes:
 
-    ```python
-    from easyPyGUI import Root, UIElement, Menu
+   ```python
+   from easyPyGUI import Root, UIElement, Menu
 
 
 ## Examples
