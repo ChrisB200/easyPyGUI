@@ -84,4 +84,5 @@ If you'd like to contribute to **easyPyGUI**, feel free to submit a pull request
 
 ## License
 
-Feel free to customize the examples, add more sections, or provide additional information based on the features and details of your easyPyGUI library.
+easyPyGUI is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+

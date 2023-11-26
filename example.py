@@ -1,39 +1,42 @@
-# Pygame Vector Test
-import pygame, sys
-from user_interface import *
+# Import necessary classes
+from easyPyGUI import Root, UIElement, Menu
+import pygame
 
-WIDTH, HEIGHT = 500, 500
-WIN = pygame.display.set_mode((WIDTH, HEIGHT), RESIZABLE)
-FPS = 75
-CLOCK = pygame.time.Clock()
-
-def test():
-    print("hi")
-
-def draw(ui):
-    WIN.fill((255, 255, 255))
-    ui.render(WIN)
-    pygame.display.update()
-    
+# Initialize Pygame
 pygame.init()
-pygame.font.init()
-    
-ui = Root(WIN, width=WIDTH, height=HEIGHT)
-menu = Menu(200, 200, 500, 500, ui, {"background": (255, 0, 0)})
-button = UIElement(75, 75, 75, 75, menu, {"background": (0, 0, 0)}, {"background": (0, 255, 0)}, {"background": (0, 0, 255)}, test)
-print(menu.children)
 
-run = True
-while run:
-    CLOCK.tick(FPS)
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_w:
-                menu.set_pos(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
-        menu.handle_event(event)
-    ui.update(WIN)
-    draw(ui)
+# Create Pygame window
+window = pygame.display.set_mode((800, 600))
+
+# Create the root element
+root = Root(window)
+
+# Create a UI element
+button = UIElement(x=50, y=50, width=100, height=30, parent=root, style={"text": "Click me!"})
+
+# Create a menu
+menu = Menu(x=200, y=50, width=150, height=200, parent=root, style={"background": (200, 200, 200)})
+
+# Add elements to the menu
+menu.add_children(
+   UIElement(x=0, y=0, width=150, height=50, parent=menu, style={"text": "Option 1"}),
+   UIElement(x=0, y=50, width=150, height=50, parent=menu, style={"text": "Option 2"}),
+   UIElement(x=0, y=100, width=150, height=50, parent=menu, style={"text": "Option 3"})
+)
+
+# Main loop
+running = True
+while running:
+   for event in pygame.event.get():
+      if event.type == pygame.QUIT:
+            running = False
+      # Handle events for root and its children
+      root.handle_event(event)
+
+   # Update and render root and its children
+   root.update(window)
+   root.render(window)
+
+   pygame.display.flip()
+
 pygame.quit()
-sys.exit()

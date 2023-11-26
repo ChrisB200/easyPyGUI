@@ -41,6 +41,10 @@ class Root:
         self.height = self.window.get_height()
         for child in self.children:
             child.update()
+            
+    def handle_event(self, event):
+        for child in self.children:
+            child.handle_event(event)
 
     def render(self, surf):
         for child in self.children:
